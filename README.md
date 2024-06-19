@@ -1,4 +1,4 @@
-# Abdal Zarinpal PG
+# Abdal Zarinpal PG For Laravel
 <p align="center"><img src="resources/img/zlogo.png?raw=true"></p>
 
  ## 💎 هدف اصلی
@@ -41,7 +41,7 @@ Abdal\AbdalZarinpalPg\ZarinpalServiceProvider::class,
 'Zarinpal' => Abdal\AbdalZarinpalPg\Facades\Zarinpal::class,
 ];
 ```
-استفاده
+### استفاده
 
 برای درخواست پرداخت یا ارسال مشتری به درگاه:
 ```bash
