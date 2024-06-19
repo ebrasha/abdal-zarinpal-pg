@@ -61,7 +61,7 @@ if (!$response->success()) {
     return response()->json(['error' => $response->message()], 400);
 }
 
-$authority = $response->getAuthority(); // ذخیره Authority در دیتابیس
+$authority = $response->getAuthority(); // Save Authority in Database
 return $response->redirect();
 
 ```
