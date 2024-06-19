@@ -27,14 +27,14 @@ composer require abdal/abdal-zarinpal-pg
 
 ### تنظیمات
 
-سپس سرویس‌پراوایدر را در فایل config/app.php اضافه کنید:
+سپس سرویس‌پراوایدر را در فایل config/app.php اضافه کنید: (برای لاراول 11 نیاز به انجام این مورد ندارید) 
 ```bash
 'providers' => [
 // ...
 Abdal\AbdalZarinpalPg\ZarinpalServiceProvider::class,
 ];
 ```
-و فاساد را ثبت کنید:
+و فاساد را ثبت کنید: (برای لاراول 11 نیاز به انجام این مورد ندارید) 
 ```bash
 'aliases' => [
 // ...
