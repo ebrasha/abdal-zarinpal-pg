@@ -1,0 +1,33 @@
+{
+    "name": "abdal/abdal-zarinpal-pg",
+    "description": "ZarinPal Payment Gateway For Laravel",
+    "keywords": [
+        "laravel",
+        "zarinpal",
+        "zarinpayment",
+        "ebrasha",
+        "abdal",
+        "ebrahim-shafiei",
+        "payment"
+    ],
+    "homepage": "https://github.com/ebrasha/abdal-zarinpal-pg",
+    "license": "MIT",
+    "version": "15.5.1",
+    "autoload": {
+        "psr-4": {
+            "Abdal\\AbdalZarinpalPg\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Ebrahim Shafiei (EbraSha)",
+            "email": "prof.shafiei@gmail.com",
+            "homepage": "https://www.ebrasha.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.2|^8.0",
+        "laravel/framework": "^7.0|^8.0|^9.0|^10.0|^11.0"
+    }
+}
