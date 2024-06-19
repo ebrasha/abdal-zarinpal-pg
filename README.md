@@ -43,8 +43,11 @@ Abdal\AbdalZarinpalPg\ZarinpalServiceProvider::class,
 ```
 استفاده
 
-برای درخواست پرداخت:
+برای درخواست پرداخت یا ارسال مشتری به درگاه:
 ```bash
+use Abdal\AbdalZarinpalPg\Zarinpal;
+
+ 
 $response = Zarinpal::merchantId('00000000-0000-0000-0000-000000000000')
     ->amount(13660000)
     ->currency('IRT')
@@ -54,20 +57,30 @@ $response = Zarinpal::merchantId('00000000-0000-0000-0000-000000000000')
     ->mobile('09022223301')
     ->request();
 
-// ذخیره Authority در دیتابیس
-$authority = $response->getAuthority();
+if (!$response->success()) {
+    return response()->json(['error' => $response->message()], 400);
+}
+
+$authority = $response->getAuthority(); // ذخیره Authority در دیتابیس
 return $response->redirect();
 
 ```
 
-برای تایید پرداخت:
+برای تایید پرداخت مشتری:
 ```bash
 
+use Abdal\AbdalZarinpalPg\Zarinpal;
+
+
 $response = Zarinpal::merchantId('00000000-0000-0000-0000-000000000000')
-->amount(1000)
-->currency('IRT')
-->authority($request->query('Authority'))
-->verify();
+    ->amount(13660000)
+    ->currency('IRT')
+    ->authority($request->query('Authority'))
+    ->verify();
+
+if (!$response->success()) {
+    return response()->json(['error' => $response->message()], 400);
+}
 
 return $response->referenceId();
 ```

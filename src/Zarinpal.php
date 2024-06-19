@@ -20,7 +20,7 @@ class Zarinpal
     public function __construct()
     {
         $this->merchantId = config('zarinpal.merchant_id');
-        $this->currency = 'IRR'; // پیش‌فرض
+        $this->currency = 'IRT';
     }
 
     public static function merchantId($merchantId)
