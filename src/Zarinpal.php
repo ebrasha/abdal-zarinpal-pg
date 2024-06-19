@@ -23,7 +23,13 @@ class Zarinpal
         $this->currency = 'IRR'; // پیش‌فرض
     }
 
-    public function merchantId($merchantId)
+    public static function merchantId($merchantId)
+    {
+        $instance = new self();
+        return $instance->setMerchantId($merchantId);
+    }
+
+    public function setMerchantId($merchantId)
     {
         $this->merchantId = $merchantId;
         return $this;
