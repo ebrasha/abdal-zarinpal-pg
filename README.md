@@ -1,5 +1,5 @@
 # Abdal Zarinpal PG
-<p align="center"><img src="resources/images/zlogo.png?raw=true"></p>
+<p align="center"><img src="resources/img/zlogo.png?raw=true"></p>
 
  ## 💎 هدف اصلی
 این پکیج برای یکپارچه‌سازی درگاه پرداخت زرین پال با لاراول طراحی شده است.
