@@ -120,6 +120,54 @@ ZARINPAL_CURRENCY=IRT
 ```bash
 ZARINPAL_CURRENCY=IRR
 ```
+اگر تنظیمات را در فایل .env وارد کردید کدها را به صورت زیر استفاده کنید
+مثال استفاده با مقادیر پیش‌فرض از فایل تنظیمات
+ارسال مشترین به درگاه بانک
+```bash
+ use Abdal\AbdalZarinpalPg\Zarinpal;
+
+   public function requestPayment(Request $request)
+{
+    $response = (new Zarinpal())
+        ->amount(13660000)
+        ->callbackUrl(route('payment.verify'))
+        ->description('خرید تست')
+        ->email('info@ebrasha.com')
+        ->mobile('09022223301')
+        ->request();
+
+    if (!$response->success()) {
+        return response()->json(['error' => $response->message()], 400);
+    }
+
+    $authority = $response->getAuthority(); // Save Authority in Database
+    return $response->redirect();
+}
+
+
+```
+برای تایید پرداخت مشتری:
+
+```bash
+
+use Abdal\AbdalZarinpalPg\Zarinpal;
+
+
+public function verifyPayment(Request $request)
+{
+    $response = (new Zarinpal())
+        ->amount(13660000)
+        ->authority($request->query('Authority'))
+        ->verify();
+
+    if (!$response->success()) {
+        return response()->json(['error' => $response->message()], 400);
+    }
+
+    return $response->referenceId();
+}
+
+```
 
 ## ❤️ کمک به پروژه
 
