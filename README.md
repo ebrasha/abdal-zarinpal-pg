@@ -42,27 +42,37 @@ Abdal\AbdalZarinpalPg\ZarinpalServiceProvider::class,
 ];
 ```
 ### استفاده
-
-برای درخواست پرداخت یا ارسال مشتری به درگاه:
+فرض کنید  Route ها را به صورت زیر تعریف کرده اید
 ```bash
-use Abdal\AbdalZarinpalPg\Zarinpal;
+Route::get('/payment/request', [ZarinpalController::class, 'requestPayment'])->name('payment.request');
+Route::get('/payment/verify', [ZarinpalController::class, 'verifyPayment'])->name('payment.verify');
+```
 
- 
-$response = Zarinpal::merchantId('00000000-0000-0000-0000-000000000000')
-    ->amount(13660000)
-    ->currency('IRT')
-    ->callbackUrl(route('payment.verify'))
-    ->description('خرید تست')
-    ->email('info@ebrasha.com')
-    ->mobile('09022223301')
-    ->request();
+پس از تعریف  Route  ها می توانید کاربر را به آن پاس دهید و در تابعی که به  route شما متصل شده است برای درخواست پرداخت یا همان ارسال مشتری به درگاه کد زیر را وارد کنید
 
-if (!$response->success()) {
-    return response()->json(['error' => $response->message()], 400);
-}
+```bash
+ use Abdal\AbdalZarinpalPg\Zarinpal;
 
-$authority = $response->getAuthority(); // Save Authority in Database
-return $response->redirect();
+    public function requestPayment(Request $request)
+    {
+        $response = Zarinpal::merchantId('00000000-0000-0000-0000-000000000000')
+            ->amount(13660000)
+            ->currency('IRT')
+            ->callbackUrl(route('payment.verify'))
+            ->description('خرید تست')
+            ->email('info@ebrasha.com')
+            ->mobile('09022223301')
+            ->request();
+
+        if (!$response->success()) {
+            return response()->json(['error' => $response->message()], 400);
+
+        }
+
+        $authority = $response->getAuthority(); // Save Authority in Database
+        return $response->redirect();
+
+    }
 
 ```
 
@@ -72,17 +82,21 @@ return $response->redirect();
 use Abdal\AbdalZarinpalPg\Zarinpal;
 
 
-$response = Zarinpal::merchantId('00000000-0000-0000-0000-000000000000')
-    ->amount(13660000)
-    ->currency('IRT')
-    ->authority($request->query('Authority'))
-    ->verify();
+ public function verifyPayment(Request $request)
+    {
 
-if (!$response->success()) {
-    return response()->json(['error' => $response->message()], 400);
-}
+        $response = Zarinpal::merchantId('00000000-0000-0000-0000-000000000000')
+            ->amount(13660000)
+            ->currency('IRT')
+            ->authority($request->query('Authority'))
+            ->verify();
 
-return $response->referenceId();
+        if (!$response->success()) {
+            return response()->json(['error' => $response->message()], 400);
+        }
+
+        return $response->referenceId();
+    }
 ```
 ## ❤️ کمک به پروژه
 
