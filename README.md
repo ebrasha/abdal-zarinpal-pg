@@ -1,8 +1,5 @@
 # Abdal Zarinpal PG For Laravel
- 
-<div style="text-align: center;">
-  <img src="resources/img/zlogo.png?raw=true" alt="Abdal Zarinpal PG For Laravel" />
-</div>
+<p align="center"><img src="resources/img/zlogo.png?raw=true"></p>
 
  ## 💎 هدف اصلی
 این پکیج برای یکپارچه‌سازی درگاه پرداخت زرین پال با لاراول طراحی شده است.
