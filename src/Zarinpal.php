@@ -20,7 +20,7 @@ class Zarinpal
     public function __construct()
     {
         $this->merchantId = config('zarinpal.merchant_id');
-        $this->currency = 'IRT';
+        $this->currency = config('zarinpal.currency');
     }
 
     public static function merchantId($merchantId)
@@ -29,9 +29,21 @@ class Zarinpal
         return $instance->setMerchantId($merchantId);
     }
 
+    public static function currency($currency)
+    {
+        $instance = new self();
+        return $instance->setCurrency($currency);
+    }
+
     public function setMerchantId($merchantId)
     {
         $this->merchantId = $merchantId;
+        return $this;
+    }
+
+    public function setCurrency($currency)
+    {
+        $this->currency = $currency;
         return $this;
     }
 
@@ -62,12 +74,6 @@ class Zarinpal
     public function mobile($mobile)
     {
         $this->mobile = $mobile;
-        return $this;
-    }
-
-    public function currency($currency)
-    {
-        $this->currency = $currency;
         return $this;
     }
 

@@ -104,6 +104,23 @@ use Abdal\AbdalZarinpalPg\Zarinpal;
         return $response->referenceId();
     }
 ```
+اگر نمی خواهید در هر بار استفاده از پکیج کد درگاه و واحد پول را وارد کنید می توانید از فایل .env نیز استفاده کنید.
+در فایل .env پروژه خود، مقادیر مربوط به ZARINPAL_MERCHANT_ID و ZARINPAL_CURRENCY را اضافه کنید:
+
+مرچنت کد یا کد درگاه را اضافه کنید
+```bash
+ZARINPAL_MERCHANT_ID=00000000-0000-0000-0000-000000000000
+```
+برای تغییر واحد پول به تومان (پکیج پیشفرض از واحد تومان استفاده می کند)
+
+```bash
+ZARINPAL_CURRENCY=IRT
+```
+برای تغییر واحد پول به ریال
+```bash
+ZARINPAL_CURRENCY=IRR
+```
+
 ## ❤️ کمک به پروژه
 
 https://alphajet.ir/abdal-donation
