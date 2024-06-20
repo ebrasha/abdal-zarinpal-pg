@@ -25,6 +25,12 @@
 composer require abdal/abdal-zarinpal-pg
 ```
 
+### بروزرسانی
+برای بروزرسانی پکیج از کامپوزر استفاده کنید:
+```bash
+ composer update  abdal/abdal-zarinpal-pg
+```
+
 ### تنظیمات
 
 سپس سرویس‌پراوایدر را در فایل config/app.php اضافه کنید: (برای لاراول 11 نیاز به انجام این مورد ندارید) 
