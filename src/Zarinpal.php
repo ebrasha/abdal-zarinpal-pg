@@ -3,6 +3,7 @@
 namespace Abdal\AbdalZarinpalPg;
 
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
 
 class Zarinpal
 {
@@ -19,8 +20,8 @@ class Zarinpal
 
     public function __construct()
     {
-        $this->merchantId = config('zarinpal.merchant_id');
-        $this->currency = config('zarinpal.currency');
+        $this->merchantId = config('abdal-zarinpal-pg.merchant_id');
+        $this->currency = config('abdal-zarinpal-pg.currency', 'IRT');
     }
 
     public static function merchantId($merchantId)
@@ -38,12 +39,14 @@ class Zarinpal
     public function setMerchantId($merchantId)
     {
         $this->merchantId = $merchantId;
+        Log::info('setMerchantId executed', ['merchantId' => $this->merchantId]);
         return $this;
     }
 
     public function setCurrency($currency)
     {
         $this->currency = $currency;
+        Log::info('setCurrency executed', ['currency' => $this->currency]);
         return $this;
     }
 
@@ -108,6 +111,12 @@ class Zarinpal
         $this->code = $this->result['errors']['code'] ?? $this->result['data']['code'] ?? null;
         $this->authority = $this->result['data']['authority'] ?? null;
 
+        Log::info('request executed', [
+            'result' => $this->result,
+            'code' => $this->code,
+            'authority' => $this->authority,
+        ]);
+
         return $this;
     }
 
@@ -128,6 +137,11 @@ class Zarinpal
 
         $this->result = $response->json();
         $this->code = $this->result['errors']['code'] ?? $this->result['data']['code'] ?? null;
+
+        Log::info('verify executed', [
+            'result' => $this->result,
+            'code' => $this->code,
+        ]);
 
         return $this;
     }

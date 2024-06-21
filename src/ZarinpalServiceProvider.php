@@ -6,21 +6,34 @@ use Illuminate\Support\ServiceProvider;
 
 class ZarinpalServiceProvider extends ServiceProvider
 {
-    public function boot()
-    {
-        $this->publishes([
-            __DIR__.'/config/zarinpal.php' => config_path('zarinpal.php'),
-        ], 'config');
-    }
-
+    /**
+     * Register any application services.
+     *
+     * @return void
+     */
     public function register()
     {
+        // بارگذاری پیکربندی
         $this->mergeConfigFrom(
-            __DIR__.'/config/zarinpal.php', 'zarinpal'
+            __DIR__.'/../config/abdal-zarinpal-pg.php', 'abdal-zarinpal-pg'
         );
 
+        // ثبت سرویس singleton
         $this->app->singleton('zarinpal', function () {
             return new Zarinpal();
         });
+    }
+
+    /**
+     * Bootstrap any application services.
+     *
+     * @return void
+     */
+    public function boot()
+    {
+        // انتشار پیکربندی
+        $this->publishes([
+            __DIR__.'/../config/abdal-zarinpal-pg.php' => config_path('abdal-zarinpal-pg.php'),
+        ], 'config');
     }
 }
