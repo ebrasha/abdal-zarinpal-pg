@@ -1,9 +1,27 @@
 <?php
 
+/*
+ **********************************************************************
+ * -------------------------------------------------------------------
+ * Project Name : Abdal Zarinpal PG
+ * File Name    : Zarinpal.php
+ * Author       : Ebrahim Shafiei (EbraSha)
+ * Email        : Prof.Shafiei@Gmail.com
+ * Created On   : 2024-06-21
+ * Description  : Abdal Zarinpal PG Main Class
+ * -------------------------------------------------------------------
+ *
+ * "Coding is an engaging and beloved hobby for me. I passionately and insatiably pursue knowledge in cybersecurity and programming."
+ * – Ebrahim Shafiei
+ *
+ **********************************************************************
+ */
+
 namespace Abdal\AbdalZarinpalPg;
 
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Cache;
 
 class Zarinpal
 {
@@ -20,8 +38,8 @@ class Zarinpal
 
     public function __construct()
     {
-        $this->merchantId = config('abdal-zarinpal-pg.merchant_id');
-        $this->currency = config('abdal-zarinpal-pg.currency', 'IRT');
+        $this->merchantId = (Cache::has("ZARINPAL_MERCHANT_ID")) ? Cache::get("ZARINPAL_MERCHANT_ID") : env('ZARINPAL_MERCHANT_ID', 'your-merchant-id');
+        $this->currency = (Cache::has("ZARINPAL_CURRENCY")) ? Cache::get("ZARINPAL_CURRENCY") : env('ZARINPAL_CURRENCY', 'IRT');
     }
 
     public static function merchantId($merchantId)
