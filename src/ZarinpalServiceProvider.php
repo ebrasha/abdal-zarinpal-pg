@@ -11,7 +11,7 @@ class ZarinpalServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function register()
+    public function register() : void
     {
         // بارگذاری پیکربندی
         $this->mergeConfigFrom(
@@ -29,11 +29,11 @@ class ZarinpalServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
+    public function boot(): void
     {
         // انتشار پیکربندی
         $this->publishes([
             __DIR__.'/../config/abdal-zarinpal-pg.php' => config_path('abdal-zarinpal-pg.php'),
-        ], 'config');
+        ], 'abdal-zarinpal-pg-config');
     }
 }
