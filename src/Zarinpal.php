@@ -48,11 +48,6 @@ class Zarinpal
         return $instance->setMerchantId($merchantId);
     }
 
-    public static function currency($currency)
-    {
-        $instance = new self();
-        return $instance->setCurrency($currency);
-    }
 
     public function setMerchantId($merchantId)
     {
@@ -61,12 +56,12 @@ class Zarinpal
         return $this;
     }
 
-    public function setCurrency($currency)
+    public function currency($currency)
     {
         $this->currency = $currency;
-        Log::info('setCurrency executed', ['currency' => $this->currency]);
         return $this;
     }
+
 
     public function amount($amount)
     {
