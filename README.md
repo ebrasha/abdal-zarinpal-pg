@@ -1,3 +1,5 @@
+<meta name="google-site-verification" content="ezQU0nWFiPcVxmRhKhR0BfRkW9nNSNNskazhbWBTF14" />
+
 # Abdal Zarinpal PG For Laravel
 <p align="center"><img src="resources/img/zlogo.png?raw=true"></p>
 
