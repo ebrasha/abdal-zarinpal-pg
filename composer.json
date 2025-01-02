@@ -12,7 +12,7 @@
     ],
     "homepage": "https://github.com/ebrasha/abdal-zarinpal-pg",
     "license": "MIT",
-    "version": "16.16.4",
+    "version": "16.16.5",
     "autoload": {
         "psr-4": {
             "Abdal\\AbdalZarinpalPg\\": "src/"
