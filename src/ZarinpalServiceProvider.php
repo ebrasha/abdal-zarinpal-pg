@@ -34,7 +34,7 @@ class ZarinpalServiceProvider extends ServiceProvider
     {
         // بارگذاری پیکربندی
         $this->mergeConfigFrom(
-            __DIR__.'/../config/abdal-zarinpal-pg.php', 'abdal-zarinpal-pg'
+            __DIR__.'/config/abdal-zarinpal-pg.php', 'abdal-zarinpal-pg'
         );
 
         // ثبت سرویس singleton
@@ -67,7 +67,7 @@ class ZarinpalServiceProvider extends ServiceProvider
     protected function configurePublishing(){
         if ($this->app->runningInConsole()) {
             $this->publishes([
-                __DIR__.'/../stubs/abdal-zarinpal-pg.php' => config_path('abdal-zarinpal-pg.php'),
+                __DIR__.'/stubs/abdal-zarinpal-pg.php' => config_path('abdal-zarinpal-pg.php'),
             ], 'abdal-zarinpal-pg-config');
 
         }
