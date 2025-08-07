@@ -118,10 +118,7 @@ class Zarinpal
         $response = Http::withHeaders([
             'Content-Type' => 'application/json',
             'User-Agent' => 'ZarinPal Rest Api v1'
-        ])
-        ->timeout(30)              // ⏱ Set max timeout to 30 seconds
-        ->retry(3, 100)            // 🔁 Retry 3 times, wait 100ms between retries
-        ->post($url, $data);
+        ])->post($url, $data);
 
 
         $this->result = $response->json();
@@ -150,10 +147,7 @@ class Zarinpal
         $response = Http::withHeaders([
             'Content-Type' => 'application/json',
             'User-Agent' => 'ZarinPal Rest Api v4'
-        ])
-        ->timeout(30)
-        ->retry(3, 100)
-        ->post($url, $data);
+        ])->post($url, $data);
 
         $this->result = $response->json();
         $this->code = $this->result['errors']['code'] ?? $this->result['data']['code'] ?? null;
